@@ -10,8 +10,9 @@ export default class Debits extends Component {
         debits: {
             debitDescription: String,
             debitAmount: Number,
-            debitDate: Date,
+            
         },
+        debitDate: " ",
         redirect: false
 
     }
@@ -27,10 +28,18 @@ export default class Debits extends Component {
         newState.redirect = true
         this.setState(newState)
     }
-    toggleDebitDisplay = () => {
-        const showDebits = !this.state.showDebits
-        this.setState({ showDebits })
-    }
+    // toggleDebitDisplay = () => {
+    //     const showDebits = !this.state.showDebits
+    //     this.setState({ showDebits })
+    // }
+    
+    getDate() {
+        const debitDate = { currentTime: new Date().toLocaleString() };
+
+        this.setState({
+          debitDate: debitDate
+        });
+      }
 
 
 
@@ -53,6 +62,10 @@ export default class Debits extends Component {
                         name="debitAmount"
                         onChange={this.handleChange}
                         value={this.state.debits.debitAmount} />
+                    <input type="date"
+                        name="debitDate"
+                        onChange={this.getDate}
+                        value={this.state.debits.debitDate}/>
 
                     <input type="submit" value="submit" onClick={this.toggleDebitDisplay}/>
 

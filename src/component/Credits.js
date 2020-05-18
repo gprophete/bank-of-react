@@ -21,6 +21,14 @@ export default class Credits extends Component {
         newState.redirect = true
         this.setState(newState)
     }
+
+    getDate() {
+        const creditDate = { currentTime: new Date().toLocaleString() };
+    
+        this.setState({
+          creditDate: creditDate
+        });
+      }
     render() {
         return (
             <div>
@@ -38,6 +46,11 @@ export default class Credits extends Component {
                         name="creditAmount"
                         onChange={this.handleChange}
                         value={this.state.creditAmount} />
+
+                     <input type="date"
+                        name="creditDate"
+                        onChange={this.getDate}
+                        value={this.state.debits.creditDate}/>
 
                     <input type="submit" value="submit" onClick={this.toggleDebitDisplay}/>
                 </form>
